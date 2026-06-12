@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
-import Login from "../pages/Login";
+import {Login} from "../pages/Login";
+
 import Dashboard from "../pages/Dashboard";
 import JobTracker from "../pages/JobTracker";
 import ResumeBuilder from "../pages/ResumeBuilder";
@@ -10,6 +11,7 @@ import Settings from "../pages/Settings";
 import DashboardLayout from "../layoutes/DashboardLayout";
 
 export default function AppRoutes() {
+ 
   return (
     <Routes>
 

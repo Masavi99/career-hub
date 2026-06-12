@@ -9,11 +9,15 @@ import "./styles/global.css";
 import "./styles/layout.css";
 import "./styles/sidebar.css";
 import "./styles/login.css";
+import { AppProvider } from "./context/AppContext";
 
 ReactDOM.createRoot(
   document.getElementById("root")
 ).render(
   <BrowserRouter>
-    <App />
+  <AppProvider>
+    <App/>
+  </AppProvider>
+   
   </BrowserRouter>
 );
