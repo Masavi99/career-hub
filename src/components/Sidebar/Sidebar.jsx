@@ -1,32 +1,39 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { NAV_PAGES } from "../../utils/Constants";
+import { useApp } from "../../context/AppContext";
 
 export default function Sidebar() {
-  return (
-    <aside className="sidebar">
-      <h2>Careear Hub</h2>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
+  const { theme, setTheme } = useApp();
+  const mainPages = NAV_PAGES.filter((p) => p.section === "main");
+  const morePages = NAV_PAGES.filter((p) => p.section === "more");
 
-          <li>
-            <Link to="/jobs">Job Tracker</Link>
-          </li>
-
-          <li>
-            <Link to="/resume">Resume Builder</Link>
-          </li>
-
-          <li>
-            <Link to="/ai-tools">AI Tools</Link>
-          </li>
-
-          <li>
-            <Link to="/settings">Settings</Link>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-  );
+  const renderLinks = (pages) =>
+    pages.map((page) => (
+      <li key={page.id}>
+        <NavLink
+          to={page.path}
+          className={({ isActive }) =>
+            isActive ? "nav-link active" : "nav-link"
+          }
+        >
+          <span className="nav-icon">{page.icon}</span>
+          {page.label}
+        </NavLink>
+      </li>
+    ));
+    return(
+      <aside className="sidebar">
+        <h2>CareerHub</h2>
+        <nav>
+          <ul className="nav-section">{renderLinks(mainPages)}</ul>
+          <div className="nav-divider"/>
+          <ul className="nav-section">{renderLinks(morePages)}</ul>
+        </nav>
+        <button
+        className="theme-toggle" onClick={()=>setTheme(theme==="dark"?"light":"dark")}
+        >
+        {theme==="dark"?"☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+      </aside>
+    );
 }

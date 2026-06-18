@@ -20,11 +20,12 @@ export const INITIAL_JOBS = [
 ];
  
 export const NAV_PAGES = [
-  { id: "tracker",   label: "Job Tracker",     icon: "📋", section: "main" },
-  { id: "search",    label: "Job Search",       icon: "🔍", section: "main" },
-  { id: "resume",    label: "Resume Builder",   icon: "📄", section: "main" },
-  { id: "ai-tools",  label: "AI Tools",         icon: "✦",  section: "main" },
-  { id: "interview", label: "Interview Coach",  icon: "🎙️", section: "main" },
-  { id: "contacts",  label: "Contacts",         icon: "👥", section: "more" },
-  { id: "settings",  label: "Settings",         icon: "⚙️", section: "more" },
+  { id: "dashboard", label: "Dashboard",       icon: "📊", section: "main", path: "/dashboard" },
+  { id: "tracker",   label: "Job Tracker",     icon: "📋", section: "main", path: "/jobs" },
+  { id: "search",    label: "Job Search",      icon: "🔍", section: "main", path: "/search" },
+  { id: "resume",    label: "Resume Builder",  icon: "📄", section: "main", path: "/resume" },
+  { id: "ai-tools",  label: "AI Tools",        icon: "✦",  section: "main", path: "/ai-tools" },
+  { id: "interview", label: "Interview Coach", icon: "🎙️", section: "main", path: "/interview" },
+  { id: "contacts",  label: "Contacts",        icon: "👥", section: "more", path: "/contacts" },
+  { id: "settings",  label: "Settings",        icon: "⚙️", section: "more", path: "/settings" },
 ];
