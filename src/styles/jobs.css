@@ -1,20 +1,105 @@
+:root {
+  --col-saved: #94a3b8;
+  --col-applied: #3b82f6;
+  --col-interview: #f59e0b;
+  --col-offer: #16a34a;
+  --col-rejected: #dc2626;
+}
+
 .job-tracker {
   padding: 20px;
 }
 
-.job-tracker h1 {
+.job-tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.job-form {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 25px;
+.btn-add {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
 
+/* ── Stats bar ─────────────────────────────────────────── */
+
+.stats-bar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ── Filter bar ────────────────────────────────────────── */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.job-search {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.chip-active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+/* ── Job form (Add / Edit, rendered inside Modal) ─────────── */
+
+.job-form {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  margin-top: 12px;
 }
 
 .job-form input,
@@ -23,20 +108,16 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  flex: 1 1 200px;
 }
 
 .job-form textarea {
   width: 100%;
   min-height: 80px;
+  flex-basis: 100%;
 }
 
-.job-form button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #2563eb;
-  color: white;
-}
+/* ── Board / columns ───────────────────────────────────── */
 
 .job-board {
   display: grid;
@@ -54,21 +135,63 @@
 .job-column h2 {
   margin-bottom: 15px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
+
+.job-count {
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.job-column-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* ── Job card ──────────────────────────────────────────── */
 
 .job-card {
   background: #f3f4f6;
   padding: 12px;
   border-radius: 10px;
   margin-bottom: 12px;
+  cursor: pointer;
+  animation: fadeUp 0.2s ease;
+}
+
+.job-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.job-logo {
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .job-card h3 {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .job-card p {
-  margin: 6px 0;
+  margin: 0;
+  color: #4b5563;
 }
 
 .job-actions {
@@ -83,6 +206,17 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+
+/* Card hover actions stay rendered for layout, but fade in on hover/focus */
+.job-actions-hover {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.job-card:hover .job-actions-hover,
+.job-card:focus-within .job-actions-hover {
+  opacity: 1;
 }
 
 .btn-edit,
@@ -101,25 +235,95 @@
   color: #374151;
 }
 
-.job-card-editing {
+.btn-move {
+  background: #e5e7eb;
+  color: #374151;
+  flex: 0 0 32px;
+}
+
+.btn-move:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Modal ─────────────────────────────────────────────── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
 }
 
-.job-card-editing input,
-.job-card-editing select,
-.job-card-editing textarea {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+.modal-content {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
   width: 100%;
-  font: inherit;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.2s ease;
 }
 
-.job-card-editing textarea {
-  min-height: 60px;
+.confirm-dialog p {
+  margin: 10px 0 18px;
+  color: #4b5563;
 }
+
+/* ── Job detail modal ──────────────────────────────────── */
+
+.job-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.job-detail-header h3 {
+  margin-bottom: 2px;
+}
+
+.job-detail-header p {
+  color: #6b7280;
+}
+
+.job-status-badge {
+  margin-left: auto;
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.job-detail-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  margin-bottom: 16px;
+}
+
+.job-detail-grid dt {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.job-detail-grid dd {
+  font-weight: 500;
+}
+
+.job-detail-notes {
+  color: #4b5563;
+  margin-bottom: 18px;
+  white-space: pre-wrap;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
 
 @media (max-width: 1200px) {
   .job-board {
@@ -134,5 +338,9 @@
 
   .job-form {
     flex-direction: column;
+  }
+
+  .stats-bar {
+    flex-wrap: wrap;
   }
 }

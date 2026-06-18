@@ -1,13 +1,26 @@
 import { useState } from "react";
+import Modal from "./Modal";
+import { useApp } from "../../context/AppContext";
+import { COLUMNS } from "../../utils/Constants";
 
-export default function JobForm({ jobs, setJobs }) {
-  const [formData, setFormData] = useState({
-    company: "",
-    title: "",
-    status: "Saved",
-    notes: "",
-    dateApplied: "",
-  });
+const EMPTY_JOB = {
+  company: "",
+  role: "",
+  status: "Saved",
+  location: "",
+  salary: "",
+  date: "",
+  notes: "",
+  logo: "",
+};
+
+export default function JobForm({ initialJob, onClose }) {
+  const { dispatch } = useApp();
+  const isEditing = Boolean(initialJob);
+
+  const [formData, setFormData] = useState(
+    initialJob ? { ...EMPTY_JOB, ...initialJob } : EMPTY_JOB
+  );
 
   const handleChange = (e) => {
     setFormData({
@@ -19,67 +32,85 @@ export default function JobForm({ jobs, setJobs }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newJob = {
-      id: crypto.randomUUID(),
+    const job = {
       ...formData,
+      logo: formData.logo || formData.company.charAt(0).toUpperCase(),
     };
 
-    setJobs([...jobs, newJob]);
+    if (isEditing) {
+      dispatch({ type: "UPDATE", job: { ...job, id: initialJob.id } });
+    } else {
+      dispatch({ type: "ADD", job });
+    }
 
-    setFormData({
-      company: "",
-      title: "",
-      status: "Saved",
-      notes: "",
-      dateApplied: "",
-    });
+    onClose();
   };
 
   return (
-    <form className="job-form" onSubmit={handleSubmit}>
-      <input
-        name="company"
-        placeholder="Company"
-        value={formData.company}
-        onChange={handleChange}
-        required
-      />
+    <Modal onClose={onClose}>
+      <h3>{isEditing ? "Edit Job" : "Add Job"}</h3>
 
-      <input
-        name="title"
-        placeholder="Job Title"
-        value={formData.title}
-        onChange={handleChange}
-        required
-      />
+      <form className="job-form" onSubmit={handleSubmit}>
+        <input
+          name="company"
+          placeholder="Company"
+          value={formData.company}
+          onChange={handleChange}
+          required
+        />
 
-      <select
-        name="status"
-        value={formData.status}
-        onChange={handleChange}
-      >
-        <option>Saved</option>
-        <option>Applied</option>
-        <option>Interview</option>
-        <option>Offer</option>
-        <option>Rejected</option>
-      </select>
+        <input
+          name="role"
+          placeholder="Job Role"
+          value={formData.role}
+          onChange={handleChange}
+          required
+        />
 
-      <input
-        type="date"
-        name="dateApplied"
-        value={formData.dateApplied}
-        onChange={handleChange}
-      />
+        <input
+          name="location"
+          placeholder="Location"
+          value={formData.location}
+          onChange={handleChange}
+        />
 
-      <textarea
-        name="notes"
-        placeholder="Notes"
-        value={formData.notes}
-        onChange={handleChange}
-      />
+        <input
+          name="salary"
+          placeholder="Salary"
+          value={formData.salary}
+          onChange={handleChange}
+        />
 
-      <button type="submit">Add Job</button>
-    </form>
+        <select name="status" value={formData.status} onChange={handleChange}>
+          {COLUMNS.map((status) => (
+            <option key={status}>{status}</option>
+          ))}
+        </select>
+
+        <input
+          type="date"
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+        />
+
+        <textarea
+          name="notes"
+          placeholder="Notes"
+          value={formData.notes}
+          onChange={handleChange}
+        />
+
+        <div className="job-actions">
+          <button type="submit" className="btn-save">
+            {isEditing ? "Save Changes" : "Add Job"}
+          </button>
+
+          <button type="button" className="btn-cancel" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
+      </form>
+    </Modal>
   );
 }
