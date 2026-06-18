@@ -21,7 +21,7 @@
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  background: #2563eb;
+  background: var(--accent);
   color: white;
   cursor: pointer;
   font-weight: 600;
@@ -36,7 +36,7 @@
 }
 
 .stat-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 14px 22px;
   display: flex;
@@ -51,7 +51,7 @@
 
 .stat-label {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--muted-text);
 }
 
 /* ── Filter bar ────────────────────────────────────────── */
@@ -68,8 +68,10 @@
   flex: 1;
   min-width: 220px;
   padding: 10px 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text);
 }
 
 .filter-chips {
@@ -80,16 +82,17 @@
 
 .chip {
   padding: 6px 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: white;
+  background: var(--card-bg);
+  color: var(--text);
   cursor: pointer;
   font-size: 13px;
 }
 
 .chip-active {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: var(--accent);
+  border-color: var(--accent);
   color: white;
 }
 
@@ -106,8 +109,10 @@
 .job-form select,
 .job-form textarea {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text);
   flex: 1 1 200px;
 }
 
@@ -126,7 +131,7 @@
 }
 
 .job-column {
-  background: white;
+  background: var(--card-bg);
   padding: 15px;
   border-radius: 12px;
   min-height: 500px;
@@ -142,8 +147,8 @@
 }
 
 .job-count {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--border);
+  color: var(--text);
   font-size: 12px;
   padding: 2px 8px;
   border-radius: 999px;
@@ -151,7 +156,7 @@
 
 .job-column-empty {
   text-align: center;
-  color: #9ca3af;
+  color: var(--muted-text);
   font-size: 13px;
   margin-top: 20px;
 }
@@ -159,7 +164,7 @@
 /* ── Job card ──────────────────────────────────────────── */
 
 .job-card {
-  background: #f3f4f6;
+  background: var(--card-bg-alt);
   padding: 12px;
   border-radius: 10px;
   margin-bottom: 12px;
@@ -180,7 +185,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--card-bg);
   border-radius: 8px;
   flex-shrink: 0;
 }
@@ -191,7 +196,7 @@
 
 .job-card p {
   margin: 0;
-  color: #4b5563;
+  color: var(--muted-text);
 }
 
 .job-actions {
@@ -221,7 +226,7 @@
 
 .btn-edit,
 .btn-save {
-  background: #2563eb;
+  background: var(--accent);
   color: white;
 }
 
@@ -231,13 +236,13 @@
 }
 
 .btn-cancel {
-  background: #e5e7eb;
-  color: #374151;
+  background: var(--border);
+  color: var(--text);
 }
 
 .btn-move {
-  background: #e5e7eb;
-  color: #374151;
+  background: var(--border);
+  color: var(--text);
   flex: 0 0 32px;
 }
 
@@ -260,7 +265,8 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--card-bg);
+  color: var(--text);
   border-radius: 14px;
   padding: 24px;
   width: 100%;
@@ -272,7 +278,7 @@
 
 .confirm-dialog p {
   margin: 10px 0 18px;
-  color: #4b5563;
+  color: var(--muted-text);
 }
 
 /* ── Job detail modal ──────────────────────────────────── */
@@ -289,7 +295,7 @@
 }
 
 .job-detail-header p {
-  color: #6b7280;
+  color: var(--muted-text);
 }
 
 .job-status-badge {
@@ -309,7 +315,7 @@
 }
 
 .job-detail-grid dt {
-  color: #6b7280;
+  color: var(--muted-text);
   font-size: 13px;
 }
 
@@ -318,7 +324,7 @@
 }
 
 .job-detail-notes {
-  color: #4b5563;
+  color: var(--muted-text);
   margin-bottom: 18px;
   white-space: pre-wrap;
 }
