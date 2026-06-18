@@ -85,6 +85,42 @@
   cursor: pointer;
 }
 
+.btn-edit,
+.btn-save {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-delete {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-cancel {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.job-card-editing {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.job-card-editing input,
+.job-card-editing select,
+.job-card-editing textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 100%;
+  font: inherit;
+}
+
+.job-card-editing textarea {
+  min-height: 60px;
+}
+
 @media (max-width: 1200px) {
   .job-board {
     grid-template-columns: repeat(2, 1fr);
