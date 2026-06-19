@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useApp } from "../context/AppContext";
 
 import { Login } from "../pages/Login";
 import JobSearch from "../pages/JobSearch";
@@ -12,25 +13,33 @@ import AiTools from "../pages/AiTools";
 import Settings from "../pages/Settings";
 
 import DashboardLayout from "../layoutes/DashboardLayout";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function AppRoutes() {
+  const { user } = useApp();
+
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route
+        path="/"
+        element={user ? <Navigate to="/dashboard" replace /> : <Login />}
+      />
 
-      <Route element={<DashboardLayout />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/search" element={<JobSearch />} />
-        <Route path="/interview" element={<InterviewCoach />} />
-        <Route path="/contacts" element={<Contacts />} />
+      <Route element={<ProtectedRoute />}>
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/search" element={<JobSearch />} />
+          <Route path="/interview" element={<InterviewCoach />} />
+          <Route path="/contacts" element={<Contacts />} />
 
-        <Route path="/jobs" element={<JobTracker />} />
+          <Route path="/jobs" element={<JobTracker />} />
 
-        <Route path="/resume" element={<ResumeBuilder />} />
+          <Route path="/resume" element={<ResumeBuilder />} />
 
-        <Route path="/ai-tools" element={<AiTools />} />
+          <Route path="/ai-tools" element={<AiTools />} />
 
-        <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
       </Route>
     </Routes>
   );
