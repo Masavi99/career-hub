@@ -1,0 +1,55 @@
+.settings {
+  padding: 20px;
+  max-width: 600px;
+}
+
+.settings h1 {
+  margin-bottom: 20px;
+}
+
+.settings-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.settings-card h2 {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.settings-row label {
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.settings-inline {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-inline input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.settings-static {
+  color: var(--text);
+}
+
+.theme-options {
+  display: flex;
+  gap: 8px;
+}

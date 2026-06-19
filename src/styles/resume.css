@@ -1,0 +1,171 @@
+.resume-builder{
+    padding: 20px;
+}
+.resume-builder h1{
+    margin-bottom: 20px;
+}
+
+.resume-layout{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.resume-editor{
+    background:var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+
+}
+
+.resume-tabs{
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.resume-tab{
+    padding: 8px 16px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+
+}
+
+.resume-tab-active{
+    background: var(--accent);
+    border-color:var(--accent);
+    color: white;
+
+}
+.resume-form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+.resume-form input,
+.resume-form textarea{
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:var(--bg);
+    color: var(--text);
+    width: 100%;
+}
+.resume-form textarea{
+    min-height: 100px;
+}
+.skill-input-row{
+    display: flex;
+    gap: 8px;
+
+}
+.skill-input-row input{
+    flex: 1;
+
+}
+.skill-chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap:8px;
+}
+.skill-chip{
+    display:flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--card-bg-alt);
+    color:var(--text);
+    font-size: 13px;
+
+}
+.skill-chip button {
+    border: none;
+    background: transparent;
+    color:var(--muted-text);
+    cursor:pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+.skill-chip-static{
+    background: var(--border);
+
+}
+.experience-entry{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+
+}
+.experience-dates{
+display: flex;
+gap: 10px;
+}
+.experience-dates input{
+flex: 1;
+}
+.btn-remove{
+    align-self: flex-start;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #dc2626;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+
+}
+.resume-preview{
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+
+}
+.preview-name{
+    font-size: 22px;
+
+}
+.preview-title{
+    color:var(--muted-text);
+    margin-bottom: 8px;
+
+}
+.preview-contact{
+    color:var(--muted-text);
+    font-size: 13px;
+    margin-bottom: 16px;
+
+}
+
+.resume-preview h3{
+    margin:16px 0 8px;
+    font-size:14px;
+    text-transform: uppercase;
+    color:var(--muted-text);
+
+}
+.preview-experience{
+    margin-bottom: 12px;
+
+}
+.preview-experience-header{
+    display:flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.preview-company{
+    color:var(--muted-text);
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+@media(max-width:900px){
+    .resume-layout{
+        grid-template-columns: 1fr;
+    }
+}
