@@ -16,7 +16,11 @@ import DashboardLayout from "../layoutes/DashboardLayout";
 import ProtectedRoute from "./ProtectedRoute";
 
 export default function AppRoutes() {
-  const { user } = useApp();
+  const { user, authLoading } = useApp();
+
+  if (authLoading) {
+    return <div className="auth-loading">Loading…</div>;
+  }
 
   return (
     <Routes>

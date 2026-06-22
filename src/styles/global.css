@@ -44,6 +44,14 @@ body {
   line-height: 1.5;
   transition:  background 0.2s, color 0.2s;
 }
+.auth-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--text);
+  background: var(--bg);
+}
 
 /* Thin, subtle scrollbar */
 ::-webkit-scrollbar       { width: 4px; height: 4px; }
