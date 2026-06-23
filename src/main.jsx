@@ -6,7 +6,7 @@ import "./styles/resume.css"
 import "./styles/jobs.css";
 import "./styles/settings.css"
 import App from "./App";
-
+import "./styles/ai-tools.css"
 
 import "./styles/global.css";
 import "./styles/layout.css";

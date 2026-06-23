@@ -1,0 +1,71 @@
+.ai-tools {
+  padding: 20px;
+  max-width: 700px;
+}
+
+.ai-tools h1 {
+  margin-bottom: 20px;
+}
+
+.ai-tool-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-tool-hint {
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.ai-tool-card textarea {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 120px;
+  font-family: var(--font-sans);
+}
+
+.score-badge {
+  align-self: flex-start;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+}
+
+.analysis-result h3 {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--muted-text);
+  text-transform: uppercase;
+}
+
+.analysis-result ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cover-letter-result {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.cover-letter-result pre {
+  white-space: pre-wrap;
+  font-family: var(--font-sans);
+  margin-bottom: 12px;
+}
