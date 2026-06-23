@@ -12,6 +12,10 @@ import "./styles/global.css";
 import "./styles/layout.css";
 import "./styles/sidebar.css";
 import "./styles/login.css";
+import "./styles/interview.css";
+import "./styles/job-search.css";
+import "./styles/contacts.css";
+
 import { AppProvider } from "./context/AppContext";
 
 ReactDOM.createRoot(

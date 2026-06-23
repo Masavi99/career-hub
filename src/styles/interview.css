@@ -1,0 +1,64 @@
+.interview-coach {
+  padding: 20px;
+  max-width: 700px;
+}
+
+.interview-coach h1 {
+  margin-bottom: 20px;
+}
+
+.chat-window {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.chat-bubble {
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 80%;
+  white-space: pre-wrap;
+}
+
+.chat-bubble-user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+}
+
+.chat-bubble-assistant {
+  align-self: flex-start;
+  background: var(--card-bg-alt);
+  color: var(--text);
+}
+
+.chat-typing {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
